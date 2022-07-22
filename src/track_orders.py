@@ -15,10 +15,7 @@ class TrackOrders:
 
     def add_new_order(self, customer, order, day):
         self.orders.append((customer, order, day))
-        if day not in self.weekdays:
-            self.weekdays[day] = 1
-        else:
-            self.weekdays[day] += 1
+        self.weekdays[day] = self.weekdays.get(day, 0) + 1
 
     def get_most_ordered_dish_per_customer(self, customer):
         return most_ordered_dish_per_customer(customer, self.orders)
